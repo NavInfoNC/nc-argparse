@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{0086a275-fcf8-41f3-9bda-bef28b8b335c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test">
+      <UniqueIdentifier>{0e80223c-6f31-4398-a85a-2e1ae0f24ec6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\nc_argparse.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="test\gtest\gtest.h">
+      <Filter>test</Filter>
+    </ClInclude>
+    <ClInclude Include="src\nc_types.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\nc_argparse.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="test\arg_parser_unittest.cpp">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\gtest\gtest-all.cc">
+      <Filter>test</Filter>
+    </ClCompile>
+    <ClCompile Include="test\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

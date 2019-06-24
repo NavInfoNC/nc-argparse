@@ -61,7 +61,7 @@ Syntax:
 
     SRC                 Source File
     DEST                Target File
-    --mode MODE         "fast" or "slow"
+    --mode MODE         "fast" or "slow". "fast" is the default.
     -i --interactive    Interactive mode
 
 )");
@@ -78,13 +78,19 @@ Syntax:
 		m_destFile = parser.getPositionalArgByIndex(1);
 
 		m_interactive = parser.hasArg("i", "interactive");
+		parser.setDefault("mode", "fast");
 		m_mode = parser.getArg("mode");
+		if (strcmp(m_mode, "fast") != 0 && strcmp(m_mode, "slow") != 0)
+		{
+			printf("error: mode should be 'fast' or 'slow'");
+			return false;
+		}
 		return true;
 	}
 
 	int run() override
 	{
-		printf("Compiling %s into %s ... Done\n", m_srcFile, m_destFile);
+		printf("Compiling %s into %s in '%s' mode ... Done\n", m_srcFile, m_destFile, m_mode);
 		return 0;
 	}
 
@@ -109,36 +115,27 @@ int main(int argc, char** argv)
 	{
 		if (hasHelp)
 			return printHelp();
+		return -1;
 	}
 
 	Subcommand* cmd = NULL;
 	if (strcmp(commandName, "test") == 0)
-	{
 		cmd = new TestSubcommand;
-	}
 	else if (strcmp(commandName, "compile") == 0)
-	{
 		cmd = new CompileSubcommand;
-	}
 
 	if (cmd != NULL)
 	{
 		if (hasHelp)
 		{
 			cmd->printHelp();
-			return 0;
 		}
-
-		if (cmd->parseArguments(parser))
+		else if (cmd->parseArguments(parser))
 		{
 			if (!parser.hasUnknownArgs())
-			{
 				result = cmd->run();
-			}
 			else
-			{
 				parser.printUnknownArgs();
-			}
 		}
 	}
 

@@ -87,6 +87,8 @@ public:
 	ArgParser();
 
 	void parse(int argc, char* argv[]);
+	int argc() { return m_argc; }
+	char** argv() { return m_argv; }
 
 	const char* getArg(const char* key);
 	const char* getArg(const char* key1, const char* key2);
@@ -116,6 +118,9 @@ public:
 	const char* getSubcommand(const char* commaSplittedCommands);
 
 private:
+	int m_argc;
+	char** m_argv;
+
 	size_t _keyValueNumber;
 	char* _keys[100];
 	const char* _values[100];
@@ -138,4 +143,16 @@ private:
 	const char* _subcommand;
 
 	const char* _getArgWithAliase(const char* key, bool useAliase);
+};
+
+class Subcommand
+{
+public:
+	Subcommand() {}
+	virtual ~Subcommand() {}
+
+public:
+	virtual void printHelp() = 0;
+	virtual bool parseArguments(ArgParser& parse) = 0;
+	virtual int run() = 0;
 };

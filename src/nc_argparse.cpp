@@ -78,6 +78,8 @@ const char* ArgParser::getDefault(const char* key)
 
 void ArgParser::parse(int argc, char* argv[])
 {
+	m_argc = argc;
+	m_argv = argv;
 	_keyValueNumber = 0;
 	_freeOptionNumber = 0;
 
@@ -227,7 +229,8 @@ const char* ArgParser::getSubcommand(const char* commaSplittedCommands)
 
 	if (_subcommand == NULL)
 	{
-		printf("error: No subcommand is given. \n");
+		if (!hasArg("h", "help") && !hasArg("v", "version") && !hasArg("changelog"))
+			printf("error: No subcommand is given. \n");
 		return NULL;
 	}
 

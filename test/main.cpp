@@ -1,10 +1,6 @@
 #include "gtest/gtest.h"
 #include "../src/nc_argparse.h"
 
-#if defined(MAPBAR_WIN32)
-#	define chdir _chdir
-#endif
-
 #define APP_NAME  "argparse"
 
 int printHelp()

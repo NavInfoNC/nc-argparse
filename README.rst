@@ -24,7 +24,7 @@ Demo Program
 ------------
 
 The project contains a demo program for you to start with.
-It has merely 150 lines of code to do all of the things below and more.
+It has merely 140 lines of code to do all of the things below and more.
 
 It supports "-h"::
 
@@ -75,7 +75,7 @@ It supports subcommands::
 It supports positional arguments and optional arguments::
 
    $ ./nc-argparse compile a.dat b.dat --mode fast -i
-   Compiling a.dat into b.dat ... Done
+   Compiling a.dat into b.dat in 'fast' mode ... Done
 
 
 It supports detection of unknown arguments::

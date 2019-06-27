@@ -11,7 +11,15 @@ For example, you can detect a optional flag:
 
 .. code-block:: cpp
 
-   if (parser.hasArg("h", "help"))
+   int main(int argc, char** argv)
+   {
+      ArgParser parser;
+      parser.parse(argc, argv);
+
+      if (parser.hasArg("h", "help"))
+         return printHelp();
+      ...
+   }
 
 Or to get an argument with a default value:
 
@@ -23,8 +31,9 @@ Or to get an argument with a default value:
 Demo Program
 ------------
 
-The project contains a demo program for you to start with.
-It has merely 140 lines of code to do all of the things below and more.
+The demo provides a good start point for a command line program.
+It has merely 140 lines of code.
+But it can do all of the following things and more.
 
 It supports "-h"::
 
